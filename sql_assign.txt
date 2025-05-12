@@ -1,0 +1,54 @@
+SELECT * FROM users;
+SELECT * FROM progress;
+
+SELECT email_domain, COUNT(*) AS total
+FROM users 
+WHERE email_domain LIKE '%.edu' 
+GROUP BY email_domain 
+ORDER BY total DESC
+LIMIT 25;
+
+SELECT COUNT(*) 
+FROM users 
+WHERE email_domain LIKE '%.edu' 
+AND city LIKE 'New York%';
+
+
+SELECT COUNT(*) 
+FROM users 
+WHERE mobile_app = 'mobile-user';
+
+
+SELECT 
+strftime('%H', sign_up_at) AS hour,
+COUNT(*) 
+FROM users
+GROUP BY hour
+ORDER BY hour;
+
+
+
+SELECT *
+FROM users
+JOIN progress ON users.user_id = progress.user_id;
+
+
+SELECT  *
+FROM users
+JOIN progress ON users.user_id = progress.user_id
+WHERE email_domain LIKE '%.edu';
+
+
+
+SELECT *
+FROM users
+JOIN progress ON users.user_id = progress.user_id
+WHERE city LIKE 'New York%';
+
+
+
+SELECT *
+FROM users
+JOIN progress ON users.user_id = progress.user_id
+WHERE city LIKE 'Chicago%';
+
